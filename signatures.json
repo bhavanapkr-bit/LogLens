@@ -1,0 +1,47 @@
+
+{
+  "signatures": [
+    {
+      "id": "SQLI_001",
+      "name": "SQL Injection",
+      "type": "sql_injection",
+      "severity": "high",
+      "pattern": "(?i)(?:'|%27)\\s*(?:or|and)\\s+\\d+\\s*=\\s*\\d+"
+    },
+    {
+      "id": "SQLI_002",
+      "name": "SQL Injection - UNION SELECT",
+      "type": "sql_injection",
+      "severity": "high",
+      "pattern": "(?i)union(?:\\s|%20|\\+)+select"
+    },
+    {
+      "id": "XSS_001",
+      "name": "Cross-Site Scripting",
+      "type": "xss",
+      "severity": "high",
+      "pattern": "(?i)<\\s*script\\b|%3cscript"
+    },
+    {
+      "id": "XSS_002",
+      "name": "JavaScript URL",
+      "type": "xss",
+      "severity": "high",
+      "pattern": "(?i)javascript\\s*:"
+    },
+    {
+      "id": "TRAVERSAL_001",
+      "name": "Directory Traversal",
+      "type": "directory_traversal",
+      "severity": "high",
+      "pattern": "(?i)\\.\\./|%2e%2e(?:/|%2f)|/etc/passwd"
+    },
+    {
+      "id": "PATH_001",
+      "name": "Suspicious Administrative or Sensitive Path",
+      "type": "suspicious_path",
+      "severity": "medium",
+      "pattern": "(?i)/(?:\\.env|wp-admin|phpmyadmin|\\.git)(?:/|$|\\?)"
+    }
+  ]
+}
