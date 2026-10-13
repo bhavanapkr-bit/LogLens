@@ -1,6 +1,6 @@
-
 import re
 from typing import Iterator, TextIO, BinaryIO
+
 
 LOG_PATTERN = re.compile(
     r'^(\S+)\s+\S+\s+\S+\s+'
@@ -9,7 +9,7 @@ LOG_PATTERN = re.compile(
     r'(\d{3})\s+(\S+)'
     r'(?:\s+"([^"]*)"\s+"([^"]*)")?\s*$'
 )
-
+    
 
 def parse_log_line(line: str):
     """Parse one Apache/Nginx access-log line."""

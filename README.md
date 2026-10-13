@@ -41,21 +41,27 @@ LogLens is a Python and Streamlit application that analyzes Apache/Nginx access 
 
 5. Run the application:
 
-   `python -m streamlit run loglens.py`
+   `python -m streamlit run Loglens.py`
 
 6. Open the local URL shown in the terminal.
 
 ## GeoIP Database
 
-To enable IP geolocation lookups, obtain the GeoLite2 City database from MaxMind and place the `.mmdb` file at the path configured in `loglens.py`.
+LogLens uses the GeoLite2 City database for IP geolocation lookups.
 
-Do not upload the database, license keys, or other private credentials to GitHub.
+To enable geolocation, obtain the GeoLite2 City database from MaxMind and place the `GeoLite2-City.mmdb` file inside the `GeoLite2-City_20261009` folder in the project directory, alongside `LogLens.py`.
 
-Some IP addresses, including private and reserved example addresses, do not have public geographic locations. Illustrative demo map points must not be interpreted as actual attacker locations.
+The expected database path is `GeoLite2-City_20261009/GeoLite2-City.mmdb`.
+
+Do not upload the database, license keys, or private credentials to GitHub.
+
+Some IP addresses, including private and reserved example addresses, do not have public geographic locations. When illustrative demo map points are displayed, they must not be interpreted as actual attacker locations.
 
 ## Performance Note
 
-The parser reads log files line by line. However, the current dashboard stores parsed records in a list and a Pandas DataFrame. Large-file memory optimization and performance testing are still required before claiming support for 500 MB logs.
+LogLens supports a large-log processing workflow that processes parsed records in batches and stores them in a temporary SQLite database to reduce memory usage. The dashboard retrieves records in batches for analysis.
+
+Performance depends on the computer, log file contents, and available memory and storage. Testing has been performed with large log files, including a file of approximately 500 MB. Processing time may vary depending on the environment.
 
 ## Security Disclaimer
 
